@@ -1,0 +1,225 @@
+<!--Copyright by Juliusz Sagan. The right to copy is strictly prohibited! It is forbidden to use resources inappropriately!-->
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELDRU</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-dark: #0a0a0f;
+            --surface-dark: #141420;
+            --primary-color: #4fc3f7;
+            --text-light: #e0e0e0;
+            --text-muted: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .gradient-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.1) 0%, rgba(79, 195, 247, 0.03) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            flex-grow: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+            .header h1 {
+                font-size: 3rem;
+                font-weight: 300;
+                color: var(--primary-color);
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                position: relative;
+                display: inline-block;
+            }
+
+                .header h1::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -10px;
+                    left: 0;
+                    width: 100%;
+                    height: 2px;
+                    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+                }
+
+        .printer-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .printer-item {
+            background-color: var(--surface-dark);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(79, 195, 247, 0.2);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+            .printer-item::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: linear-gradient(45deg, transparent, var(--primary-color), transparent);
+                transform: rotate(-45deg);
+                opacity: 0;
+                transition: opacity 0.5s ease;
+            }
+
+            .printer-item:hover::before {
+                opacity: 0.1;
+            }
+
+            .printer-item:hover {
+                transform: translateY(-15px) scale(1.05);
+                box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+                border-color: var(--primary-color);
+            }
+
+            .printer-item a {
+                text-decoration: none;
+                color: var(--primary-color);
+                font-weight: 400;
+                font-size: 1.2em;
+                position: relative;
+                transition: all 0.3s ease;
+                display: inline-block;
+            }
+
+                .printer-item a::after {
+                    content: '';
+                    position: absolute;
+                    width: 0;
+                    height: 2px;
+                    bottom: -5px;
+                    left: 50%;
+                    background-color: var(--primary-color);
+                    transition: all 0.3s ease;
+                }
+
+                .printer-item a:hover {
+                    color: white;
+                }
+
+                    .printer-item a:hover::after {
+                        width: 100%;
+                        left: 0;
+                    }
+
+        footer {
+            background-color: rgba(20, 20, 32, 0.8);
+            color: var(--text-muted);
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+            footer p {
+                font-size: 0.9rem;
+            }
+
+        @media (max-width: 768px) {
+            .printer-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-background"></div>
+    <div class="container">
+        <div class="header">
+            <h1>ELDRU</h1>
+        </div>
+        <div class="printer-list">
+            <div class="printer-item">
+                <a href="http://192.168.102.22" target="_blank">Recepcja </br> (Brother12_REC)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.11" target="_blank">Dział Techniczny </br> (Canon iR-ADV C3520 UFR II 01)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.12" target="_blank">Logistyka </br> (Canon iR-ADV </br> C3520 UFR II 02)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.16" target="_blank">Kadry </br> (Canon iR-ADV C3520 UFR II 06)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.21" target="_blank">Księgowość </br> (Canon iR-ADV C3520 UFR II 11)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.13" target="_blank">BiuraPie </br> (Canon MF734 03)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.17" target="_blank">Pakowalnia </br> (HP CLJ 07)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.18" target="_blank">Magazyn </br> (HP CLJ 08)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.19" target="_blank">Grawimetria </br> (HP CLJ 09)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.102.20" target="_blank">Liderzy </br> (HP CLJ 10)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.1.15" target="_blank">Kontrola Jakości </br> (Zebra_GK420t_01)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.1.241" target="_blank">L08 </br> (Zebra_GK420t_02)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.1.242" target="_blank">RAD </br> (Zebra_GK420t_03)</a>
+            </div>
+            <div class="printer-item">
+                <a href="http://192.168.1.216" target="_blank">Magazyn </br> (Zebra_GK420t_04)</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Juliusz Sagan. Wszelkie prawa zastrzeżone.</p>
+    </footer>
+</body>
+</html>
+<!--Copyright by Juliusz Sagan. The right to copy is strictly prohibited! It is forbidden to use resources inappropriately!-->
